@@ -11,7 +11,7 @@ class RestaurantController extends Controller
     public function list(){
         
         $restaurants = Restaurant::all();
-        return view('dashboard', [
+        return view('/accueil', [
         'restaurants' => $restaurants
         ]);
        }
