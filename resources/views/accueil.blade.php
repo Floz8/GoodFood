@@ -9,10 +9,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/logout">Log out</a>
+          @if (Auth::check())
+          <a class="nav-link active" aria-current="page" href="/logout">Log out</a>  
+          @endif 
         </li>
-        <a class="nav-link active" aria-current="page" href="{{route('panier.show', ['id' => Auth::id()])}}" >Panier</a>
+        <li> <a class="nav-item nav-link" href="register"  > @if (Auth::check())
+@else
+    Créer un compte
+@endif</a></li>
+        <li><a class="nav-item nav-link" href="login" > @if (Auth::check())
+@else
+    Connexion
+@endif</a> </li>
         
+    
        
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -43,7 +53,12 @@
   <div class="card-body">
     <h5 class="card-title"> {{$restaurant['Nom']}}</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="{{route('restaurants.show', ['id' => $restaurant->id])}}" class="btn btn-primary">Commander</a>
+    @if (Auth::check())
+    <a href="{{route('restaurants.show', ['id' => $restaurant->id])}}" class="btn btn-primary">Choisir ce restaurant</a>
+    @else
+  <a href="login" class="btn btn-primary">Choisir ce restaurant</a>                                                                                                                                                                                                                                                                                                                                                                                             
+    @endif
+    
   </div>
 </div>
   @endforeach

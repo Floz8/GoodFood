@@ -17,14 +17,17 @@ use App\Http\Controllers\PlatController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*
+//Route::get('/', function () {
+   
+    //return view('welcome');
+});*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [RestaurantController::class, 'list']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'user'])->name('dashboard');
+Route::get('/accueil', function () {
+    return view('accueil');
+})->middleware(['auth', 'user'])->name('accueil');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
@@ -39,7 +42,7 @@ Route::get('/panier', function () {
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/panier/{id}', [PanierController::class, 'show'])->name('panier.show');
 
-Route::get('/dashboard', [RestaurantController::class, 'list']);
+Route::get('/accueil', [RestaurantController::class, 'list']);
 Route::get('/restaurants/{id}', [RestaurantController::class, 'show'])->name('restaurants.show');
 
 

@@ -28,12 +28,12 @@ class RedirectIfAuthenticated
 
                 // to admin dashboard
                 if($user->hasRole('admin')) {
-                    return redirect(route('admin_dashboard'));
+                    return redirect(route('dashboardG'));
                 }
 
                 // to user dashboard
                 else if($user->hasRole('user')) {
-                    return redirect(route('dashboard'));
+                    return redirect(route('/accueil'));
                 }
             }
         }
