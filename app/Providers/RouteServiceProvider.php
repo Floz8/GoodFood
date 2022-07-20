@@ -35,6 +35,11 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+                Route::get('/restaurant', ['App\Http\Controllers\ApiControler', 'listApiRestaurant']);
+Route::post('/restaurant', ['App\Http\Controllers\ApiControler', 'createApiRestaurant']);
+Route::delete('/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'deleteApiRestaurant']);
+
         });
     }
 
