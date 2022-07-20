@@ -39,15 +39,18 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
             
                 // restaurant
-                Route::get('/restaurant', ['App\Http\Controllers\ApiControler', 'listApiRestaurant']);
-                Route::get('/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'FindOneApiRestaurant']);
-                Route::post('/restaurant/new', ['App\Http\Controllers\ApiControler', 'createApiRestaurant']);
-                Route::delete('/restaurant/del/{id}', ['App\Http\Controllers\ApiControler', 'deleteApiRestaurant']);
+                Route::get('/api/restaurant', ['App\Http\Controllers\ApiControler', 'ListApiRestaurant']);
+                Route::get('/api/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'FindOneApiRestaurant']);
+                Route::put('/api/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'UpdateApiRestaurant']);
+                Route::post('/api/restaurant', ['App\Http\Controllers\ApiControler', 'CreateApiRestaurant']);
+                Route::delete('/api/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'DeleteApiRestaurant']);
 
-                     // plats
-                     Route::get('/restaurant/{id}/plat', ['App\Http\Controllers\ApiControler', 'listApiPlat']);
-                     Route::get('/restaurant/{id}/plat/{idPlat}', ['App\Http\Controllers\ApiControler', 'FindOneApiPlat']);
-                    
+                // plats
+                Route::get('/api/plat', ['App\Http\Controllers\ApiControler', 'ListApiPlat']);
+                Route::get('/api/plat/{id}', ['App\Http\Controllers\ApiControler', 'FindOneApiPlat']);
+                Route::post('/api/plat', ['App\Http\Controllers\ApiControler', 'CreateApiPlat']);
+                Route::put('/api/plat/{id}', ['App\Http\Controllers\ApiControler', 'UpdateApiPlat']);
+            
         });
     }
 

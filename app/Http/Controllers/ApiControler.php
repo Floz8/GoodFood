@@ -8,31 +8,114 @@ use App\Models\Plat as Plat;
 
 class ApiControler extends Controller
 {
+/*
+ public function index()
+    {
+        // On récupère tous les utilisateurs
+        $users = User::all();
 
+        // On retourne les informations des utilisateurs en JSON
+        return response()->json($users);
+    }
+
+    public function store(Request $request)
+    {
+        // La validation de données
+        $this->validate($request, [
+           'name' => 'required|max:100',
+           'email' => 'required|email|unique:users',
+           'password' => 'required|min:8'
+        ]);
+
+        // On crée un nouvel utilisateur
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
+        // On retourne les informations du nouvel utilisateur en JSON
+        return response()->json($user, 201);
+    }
+
+    public function show(User $user)
+    {
+        // On retourne les informations de l'utilisateur en JSON
+        return response()->json($user);
+    }
+
+    public function update(Request $request, User $user)
+    {
+        // La validation de données
+        $this->validate($request, [
+           'name' => 'required|max:100',
+           'email' => 'required|email',
+           'password' => 'required|min:8'
+        ]);
+
+        // On modifie les informations de l'utilisateur
+        $user->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => bcrypt($request->password)
+        ]);
+
+        // On retourne la réponse JSON
+        return response()->json();
+    }
+
+    public function destroy(User $user)
+    {
+        // On supprime l'utilisateur
+        $user->delete();
+
+        // On retourne la réponse JSON
+        return response()->json();
+    }
+*/
     // todo auth avec api key et msg error auth code 403
 
     // restaurant
-    public function listApiRestaurant(){
-        return response()->json(Restaurant::all());
+    public function ListApiRestaurant(){
+         $resto = Restaurant::all();
+         return response()->json($resto);
     }
     
     public function FindOneApiRestaurant($id){
-        $restau = Restaurant::find($id); 
-        if($restau){
-            return response()->json(  ["body" => $restau], 201);
+        $item = Restaurant::find($id); 
+        if($item){
+            return response()->json(  ["body" => $item], 201);
         }else{
             return response()->json(["status" => "Not found"],204);
         }
     }
-    public function createApiRestaurant(Request $request){
-        $item = Restaurant::create($request->all());
-        return response()->json([$item],201);
+    public function CreateApiRestaurant(Request $request){
+          // La validation de données
+          $this->validate($request, [
+            'Nom' => 'required|max:100'
+         ]);
+ 
+         $item = Restaurant::create([
+             "Nom" => $request->Nom,
+         ]);
+ 
+            return response()->json($item, 201);
+     }
+
+    public function UpdateApiRestaurant($id){
+       $this->validate($request, [
+        'Nom' => 'required|max:100',
+     ]);
+     $item->update([
+         "Nom" => $request->Nom
+     ]);
+      return response()->json();
     }
     
-    public function deleteApiRestaurant($id){
-        $restau = Restaurant::find($id);
-        if($restau){
-            $restau->delete();
+    public function DeleteApiRestaurant($id){
+        $item = Restaurant::find($id);
+        if($item){
+            $item->delete();
             return response()->json(["status" => "success"],200);
         }else{
             return response()->json(["status" => "error"],500);
@@ -40,44 +123,57 @@ class ApiControler extends Controller
     }
 
     //plat
-    public function listApiPlat(){
+    public function ListApiPlat(){
         return response()->json(Plat::all());
     }
 
-    public function FindOneApiPlat($id,$idPlat){
-        $plat = Plat::where('id',$idPlat)->first(); 
-        if($plat){
+    public function FindOneApiPlat($id){
+        $item = Plat::find($id);
+        if($item){
             return response()->json(  ["body" => $plat], 200);
         }else{
             return response()->json(["status" => "not found"],204);
         }
     }
-/*
-    //fournisseur
-     public function listApiRestaurant(){
-        return response()->json(Restaurant::all());
-    }
-    
-    public function FindOneApiRestaurant($id){
-        $restau = Restaurant::find($id); 
-        if($restau){
-            return response()->json(  ["body" => $restau], 201);
-        }else{
-            return response()->json(["status" => "error"]);
-        }
-    }
-    public function createApiRestaurant(Request $request){
-        $item = Restaurant::create($request->all());
-        return response()->json($item);
-    }
-    
-    public function deleteApiRestaurant($id){
-        $restau = Restaurant::find($id);
-        if($restau){
-            $restau->delete();
-            return response()->json(["status" => "success"]);
-        }else{
-            return response()->json(["status" => "error"]);
-        }
-    }*/
+
+    public function CreateApiPlat(Request $request){
+        $this->validate($request, [
+          'Nom' => 'required|max:100',
+          'prix' =>'required',
+          'restaurants_id' => 'required'
+       ]);
+
+       $item = Plat::create([
+           "Nom" => $request->Nom,
+           "prix " =>$request-> prix,
+           "restaurants_id" => $request->restaurants_id
+       ]);
+
+          return response()->json($item, 201);
+   }
+
+  public function UpdateApiPlat($id){
+     $this->validate($request, [
+        'Nom' => 'required|max:100',
+        'prix' =>'required',
+        'restaurants_id' => 'required'
+   ]);
+
+   $user->update([
+       "Nom" => $request->Nom,
+           "prix " =>$request-> prix,
+           "restaurants_id" => $request->restaurants_id
+   ]);
+   return response()->json();
+  }
+  
+  public function DeleteApiPlat($id){
+      $item = Plat::find($id);
+      if($item){
+          $item->delete();
+          return response()->json(["status" => "success"],200);
+      }else{
+          return response()->json(["status" => "error"],500);
+      }
+  }
 }
