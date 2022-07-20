@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant as Restaurant;
+use App\Models\Plat as Plat;
 
 class ApiControler extends Controller
 {
@@ -34,5 +35,10 @@ class ApiControler extends Controller
         }else{
             return response()->json(["status" => "error"]);
         }
+    }
+
+    //plat
+    public function listApiPlat(){
+        return response()->json(Plat::all());
     }
 }

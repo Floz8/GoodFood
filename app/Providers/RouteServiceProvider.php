@@ -42,7 +42,11 @@ class RouteServiceProvider extends ServiceProvider
                 Route::get('/restaurant', ['App\Http\Controllers\ApiControler', 'listApiRestaurant']);
                 Route::get('/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'FindOneApiRestaurant']);
                 Route::post('/restaurant/new', ['App\Http\Controllers\ApiControler', 'createApiRestaurant']);
-                Route::delete('/restaurant/del{id}', ['App\Http\Controllers\ApiControler', 'deleteApiRestaurant']);
+                Route::delete('/restaurant/del/{id}', ['App\Http\Controllers\ApiControler', 'deleteApiRestaurant']);
+
+                     // plats
+                     Route::get('/restaurant/{id}/plat', ['App\Http\Controllers\ApiControler', 'listApiPlat']);
+                    
         });
     }
 
