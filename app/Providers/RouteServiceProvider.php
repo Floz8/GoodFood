@@ -46,6 +46,7 @@ class RouteServiceProvider extends ServiceProvider
 
                      // plats
                      Route::get('/restaurant/{id}/plat', ['App\Http\Controllers\ApiControler', 'listApiPlat']);
+                     Route::get('/restaurant/{id}/plat/{idPlat}', ['App\Http\Controllers\ApiControler', 'FindOneApiPlat']);
                     
         });
     }
