@@ -3,13 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Restaurant as Restaurant;
 
 class ApiControler extends Controller
 {
+
+    // restaurant
     public function listApiRestaurant(){
         return response()->json(Restaurant::all());
     }
-
+    
+    public function FindOneApiRestaurant($id){
+        $restau = Restaurant::find($id); 
+        if($restau){
+            return response()->json(  ["body" => $restau], 201);
+        }else{
+            return response()->json(["status" => "error"]);
+        }
+    }
     public function createApiRestaurant(Request $request){
         $item = Restaurant::create($request->all());
         return response()->json($item);
@@ -24,5 +35,4 @@ class ApiControler extends Controller
             return response()->json(["status" => "error"]);
         }
     }
-    
 }

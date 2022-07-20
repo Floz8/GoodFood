@@ -29,17 +29,20 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
+            
+            Route::middleware('web')
+            ->group(base_path('routes/web.php'));
+
+            // api
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
-
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
-
+            
+                // restaurant
                 Route::get('/restaurant', ['App\Http\Controllers\ApiControler', 'listApiRestaurant']);
-Route::post('/restaurant', ['App\Http\Controllers\ApiControler', 'createApiRestaurant']);
-Route::delete('/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'deleteApiRestaurant']);
-
+                Route::get('/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'FindOneApiRestaurant']);
+                Route::post('/restaurant/new', ['App\Http\Controllers\ApiControler', 'createApiRestaurant']);
+                Route::delete('/restaurant/del{id}', ['App\Http\Controllers\ApiControler', 'deleteApiRestaurant']);
         });
     }
 
