@@ -43,38 +43,38 @@
 </div>
 <div class="row">
 <div class="col-sm-12">
-    <h1 class="display-3">Plats</h1>
+    <h1 class="display-3">Users</h1>
     <div>
-    <a href="/CreatePlat" class="btn btn-primary mb-3">Ajouter un Plat</a>
+    <a href="/CreateUser" class="btn btn-primary mb-3">Ajouter un utilisateur</a>
     </div>     
-    @if(session()->get('success'))
+
     <div class="alert alert-success">
-      {{ session()->get('success') }}  
+     
     </div>
-  @endif
   <table class="table table-striped">
     <thead>
         <tr>
           <td>ID</td>
-          <td>Nom du Plat</td>
+          <td>Nom du user</td>
           <td>Editer le nom</td>
-          <td>restaurant Value</td>
+          <td>user Value</td>
         </tr>
     </thead>
     <tbody>
-        @foreach($plats as $plat)
+        @foreach($users as $user)
         <tr>
-            <td>{{$plat->id}}</td>
-            <td>{{$plat->Nom}} </td>
-            <td>{{$plat->prix}} </td>
+            <td>{{$user->id}}</td>
+            <td>{{$user->name}} </td>
+            <td>{{$user->email}} </td>
+            <td>{{$user->role}} </td>
             <td>
-                <a href="{{route('plats.goToEdit', ['id' => $plat->id])}}">Edit</a>
+                <a href="{{route('users.goToEdit', ['id' => $user->id])}}">Edit</a>
             </td>
             <td>
                 
                   @csrf
     
-                <a href="{{route('plats.delete', ['id' => $plat->id])}}" class="btn btn-danger">Effacer</a>
+                <a href="{{route('users.delete', ['id' => $user->id])}}" class="btn btn-danger">Effacer</a>
                 </form>
             </td>
         </tr>

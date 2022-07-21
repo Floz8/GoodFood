@@ -29,12 +29,28 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
+            
+            Route::middleware('web')
+            ->group(base_path('routes/web.php'));
+
+            // api
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
+            
+                // restaurant
+                Route::get('/api/restaurant', ['App\Http\Controllers\ApiControler', 'ListApiRestaurant']);
+                Route::get('/api/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'FindOneApiRestaurant']);
+                Route::put('/api/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'UpdateApiRestaurant']);
+                Route::post('/api/restaurant', ['App\Http\Controllers\ApiControler', 'CreateApiRestaurant']);
+                Route::delete('/api/restaurant/{id}', ['App\Http\Controllers\ApiControler', 'DeleteApiRestaurant']);
 
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
+                // plats
+                Route::get('/api/plat', ['App\Http\Controllers\ApiControler', 'ListApiPlat']);
+                Route::get('/api/plat/{id}', ['App\Http\Controllers\ApiControler', 'FindOneApiPlat']);
+                Route::post('/api/plat', ['App\Http\Controllers\ApiControler', 'CreateApiPlat']);
+                Route::put('/api/plat/{id}', ['App\Http\Controllers\ApiControler', 'UpdateApiPlat']);
+                Route::delete('/api/plat/{id}', ['App\Http\Controllers\ApiControler', 'DeleteApiPlat']);
         });
     }
 
