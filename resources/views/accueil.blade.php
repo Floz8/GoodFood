@@ -33,7 +33,6 @@
     </div>
   </div>
   @endforeach
-  {{Session::get('restoId');}}
   
 </body>
   @endsection
