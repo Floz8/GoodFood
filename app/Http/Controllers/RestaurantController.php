@@ -51,6 +51,8 @@ class RestaurantController extends Controller
         return redirect('RestaurantManager')->with('success', 'Restaurant Ajouté.');
      
          }
+
+         
          public function update(Request $request, $id)
          {
              // Validation for required fields (and using some regex to validate our numeric value)
