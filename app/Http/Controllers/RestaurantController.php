@@ -11,8 +11,9 @@ class RestaurantController extends Controller
     public function list(){
         
         $restaurants = Restaurant::all();
+        
         return view('/accueil', [
-        'restaurants' => $restaurants
+        'restaurants' => $restaurants,
         ]);
        }
        public function listmanager(){
@@ -27,7 +28,8 @@ class RestaurantController extends Controller
         //dd($restaurant);
        // return view('restaurants.show', compact('restaurant'));
        return view('restaurant',[
-        'restaurant'=>$restaurant
+        'restaurant'=>$restaurant,
+        session(['restoId' => $restaurant->id])
     ]);
     }
     public function goToEdit($restaurant){
@@ -64,7 +66,10 @@ class RestaurantController extends Controller
              $restaurant->save();
       
              return redirect('RestaurantManager')->with('success', 'restaurant updated.'); // -> resources/views/restaurants/index.blade.php
+             
          }
+
+         
 }
 
         
