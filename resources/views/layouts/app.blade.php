@@ -36,9 +36,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/">Dashboard <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="register">Créer un compte</a>
-      <a class="nav-item nav-link" href="login">Connexion</a>
+ 
     </div>
   </div>
 </nav>
