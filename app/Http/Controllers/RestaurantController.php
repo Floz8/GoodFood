@@ -49,6 +49,7 @@ class RestaurantController extends Controller
     public function store(Request $request){
         $restaurant = new Restaurant();
         $restaurant->Nom = $request->Nom;
+        $restaurant->description = $request->description;
         $restaurant->save();
         return redirect('RestaurantManager')->with('success', 'Restaurant Ajouté.');
      
@@ -65,6 +66,7 @@ class RestaurantController extends Controller
              $restaurant = Restaurant::find($id);
              // Getting values from the blade template form
              $restaurant->Nom =  $request->get('Nom');
+             $restaurant->description =  $request->get('description');
              $restaurant->save();
       
              return redirect('RestaurantManager')->with('success', 'restaurant updated.'); // -> resources/views/restaurants/index.blade.php

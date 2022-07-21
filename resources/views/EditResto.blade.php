@@ -21,9 +21,12 @@
  
                 <label for="Nom">Nom du restaurant:*</label>
                 <input type="text" class="form-control" name="Nom" value="{{ $restaurant->Nom }}" />
+
+                <label for="Nom" style="margin-top:1rem;">Description du restaurant:*</label>
+                <input type="text" class="form-control" name="description" value="{{ $restaurant->description }}" />
             </div>
  
-            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            <button type="submit" class="btn btn-primary" style="margin-top:2rem;">Mettre à jour</button>
         </form>
     </div>
 </div>

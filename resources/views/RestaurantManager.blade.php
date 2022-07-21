@@ -43,7 +43,7 @@
 </div>
 <div class="row">
 <div class="col-sm-12">
-    <h1 class="display-3">restaurants</h1>
+    <h1 class="display-3">Vue de tous les restaurants</h1>
     <div>
     <a href="/CreateResto" class="btn btn-primary mb-3">Ajouter un restaurant</a>
     </div>     
@@ -57,6 +57,7 @@
         <tr>
           <td>ID</td>
           <td>Nom du restaurant</td>
+          <td>Descritpion du restaurant</td>
           <td>Editer le nom</td>
           <td>restaurant Value</td>
         </tr>
@@ -66,6 +67,7 @@
         <tr>
             <td>{{$restaurant->id}}</td>
             <td>{{$restaurant->Nom}} </td>
+            <td>{{$restaurant->description}} </td>
             <td>
                 <a href="{{route('restaurants.goToEdit', ['id' => $restaurant->id])}}">Edit</a>
             </td>
