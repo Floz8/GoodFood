@@ -13,7 +13,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           @if (Auth::check())
-          <a class="nav-item nav-link" style="color:white; margin-right: 0.6rem;" aria-current="page" href="/logout">Deconnexion {{Auth::user()->name}}</a>  
+          <a class="nav-item nav-link" style="color:white; margin-right: 0.6rem;" aria-current="page" href="../logout">Deconnexion {{Auth::user()->name}}</a>  
           @endif 
           
           
@@ -21,7 +21,7 @@
         <li class="nav-item">
         @if (Auth::check())
           @if(Auth::user()->role=='admin')
-        <a class="nav-item nav-link" style="color:white; margin-right: 0.6rem;" aria-current="page" href="dashboardG">Interface d'administration</a>
+        <a class="nav-item nav-link" style="color:white; margin-right: 0.6rem;" aria-current="page" href="../dashboardG">Interface d'administration</a>
           @endif
         @endif 
         </li>
