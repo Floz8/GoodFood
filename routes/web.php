@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\PlatController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -84,6 +85,22 @@ Route::Post('CreatePlat', [PlatController::class, 'store'])->name('plats.store')
 //Update
 Route::get('/EditPlat/{id}', [PlatController::class, 'goToEdit'])->name('plats.goToEdit');
 Route::Post('EditPlat/{id}', [PlatController::class, 'update'])->name('plats.update');;
+
+//CRUD User
+Route::get('/UserManager', [UserController::class, 'listmanager']);
+
+//Delete
+Route::get('/UserManager/{id}', [UserController::class, 'delete'])->name('users.delete');;
+
+//Create
+Route::get('CreateUser', function () {
+    return view('CreateUser');
+});
+Route::Post('CreateUser', [UserController::class, 'store'])->name('users.store');;
+
+//Update
+Route::get('/EditUser/{id}', [UserController::class, 'goToEdit'])->name('users.goToEdit');
+Route::Post('EditUser/{id}', [UserController::class, 'update'])->name('users.update');;
 
 require __DIR__.'/auth.php';
 
