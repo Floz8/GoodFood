@@ -78,7 +78,7 @@ class ApiControler extends Controller
     // restaurant
     public function ListApiRestaurant(){
          $resto = Restaurant::all();
-         if($item){
+         if($resto){
             return response()->json(  ["body" => $resto], 200);
         }else{
             return response()->json(["status" => "No content"],204);
@@ -131,7 +131,7 @@ class ApiControler extends Controller
     public function ListApiPlat(){
         $item=  Plat::all();
         if($item){
-            return response()->json(  ["body" => $plat], 200);
+            return response()->json(  ["body" => $item], 200);
         }else{
             return response()->json(["status" => "no content"],204);
         }
@@ -140,7 +140,7 @@ class ApiControler extends Controller
     public function FindOneApiPlat($id){
         $item = Plat::find($id);
         if($item){
-            return response()->json(  ["body" => $plat], 200);
+            return response()->json(  ["body" => $item], 200);
         }else{
             return response()->json(["status" => "no content"],204);
         }
