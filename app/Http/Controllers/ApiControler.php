@@ -90,32 +90,27 @@ class ApiControler extends Controller
         }
     }
     public function CreateApiRestaurant(Request $request){
-          // La validation de données
-          $this->validate($request, [
-            'Nom' => 'required|max:100'
-         ]);
- 
-         $item = Restaurant::create([
-             "Nom" => $request->Nom,
-         ]);
- 
-            return response()->json($item, 201);
-     }
+         $restaurant = Restaurant::store($request->all());
+         if($restaurant){
+            return response()->json(  ["body" => $restaurant], 201);
+        }
+        }
 
-    public function UpdateApiRestaurant($id){
+    public function UpdateApiRestaurant(Request $request,$id){
        $this->validate($request, [
         'Nom' => 'required|max:100',
      ]);
-     $item->update([
-         "Nom" => $request->Nom
-     ]);
+     $restaurant = Restaurant::find($id);
+     // Getting values from the blade template form
+     $restaurant->Nom =  $request->get('Nom');
+     $restaurant->save();
       return response()->json();
     }
     
     public function DeleteApiRestaurant($id){
-        $item = Restaurant::find($id);
-        if($item){
-            $item->delete();
+        $restaurant = Restaurant::find($id);
+        if($restaurant){
+        $restaurant->delete();
             return response()->json(["status" => "success"],200);
         }else{
             return response()->json(["status" => "error"],500);
