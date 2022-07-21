@@ -132,11 +132,11 @@ class ApiControler extends Controller
     }
 
     public function CreateApiPlat(Request $request){
-        $this->validate($request, [
-          'Nom' => 'required|max:100',
+     $this->validate($request, [
+        'Nom' => 'required|max:100',
           'prix' =>'required',
-          'restaurants_id' => 'required'
-       ]);
+        'restaurants_id' => 'required'
+     ]);
 
        $item = Plat::create([
            "Nom" => $request->Nom,
@@ -145,30 +145,30 @@ class ApiControler extends Controller
        ]);
 
           return response()->json($item, 201);
-   }
+    }
 
   public function UpdateApiPlat($id){
-     $this->validate($request, [
-        'Nom' => 'required|max:100',
+        $this->validate($request, [
+         'Nom' => 'required|max:100',
         'prix' =>'required',
         'restaurants_id' => 'required'
-   ]);
+      ]);
 
    $user->update([
        "Nom" => $request->Nom,
            "prix " =>$request-> prix,
            "restaurants_id" => $request->restaurants_id
    ]);
-   return response()->json();
-  }
+       return response()->json();
+     }
   
   public function DeleteApiPlat($id){
-      $item = Plat::find($id);
-      if($item){
-          $item->delete();
-          return response()->json(["status" => "success"],200);
-      }else{
-          return response()->json(["status" => "error"],500);
-      }
+    $item = Plat::find($id);
+    if($item){
+    $item->delete();
+        return response()->json(["status" => "success"],200);
+    }else{
+        return response()->json(["status" => "error"],500);
+    }
   }
 }
