@@ -78,40 +78,50 @@ class ApiControler extends Controller
     // restaurant
     public function ListApiRestaurant(){
          $resto = Restaurant::all();
-         return response()->json($resto);
+         if($item){
+            return response()->json(  ["body" => $resto], 200);
+        }else{
+            return response()->json(["status" => "No content"],204);
+        }
     }
     
     public function FindOneApiRestaurant($id){
         $item = Restaurant::find($id); 
         if($item){
-            return response()->json(  ["body" => $item], 201);
+            return response()->json(  ["body" => $item], 200);
         }else{
-            return response()->json(["status" => "Not found"],204);
+            return response()->json(["status" => "No content"],204);
         }
     }
+
     public function CreateApiRestaurant(Request $request){
          $restaurant = Restaurant::store($request->all());
-         if($restaurant){
+        if($restaurant){
             return response()->json(  ["body" => $restaurant], 201);
+        }else{
+            return response()->json(["status" => "Bad request"],400);
         }
-        }
+    }
 
     public function UpdateApiRestaurant(Request $request,$id){
        $this->validate($request, [
         'Nom' => 'required|max:100',
      ]);
      $restaurant = Restaurant::find($id);
-     // Getting values from the blade template form
      $restaurant->Nom =  $request->get('Nom');
      $restaurant->save();
-      return response()->json();
+    if($restaurant){
+        return response()->json(  ["body" => $restaurant], 201);
+    }else{
+            return response()->json(["status" => "Bad request"],400);
+        }
     }
     
-    public function DeleteApiRestaurant($id){
+    public function DeleteApiRestaurant(Request $request,$id){
         $restaurant = Restaurant::find($id);
         if($restaurant){
-        $restaurant->delete();
-            return response()->json(["status" => "success"],200);
+         $restaurant->delete();
+            return response()->json(["status" => "success"],201);
         }else{
             return response()->json(["status" => "error"],500);
         }
@@ -119,7 +129,12 @@ class ApiControler extends Controller
 
     //plat
     public function ListApiPlat(){
-        return response()->json(Plat::all());
+        $item=  Plat::all();
+        if($item){
+            return response()->json(  ["body" => $plat], 200);
+        }else{
+            return response()->json(["status" => "no content"],204);
+        }
     }
 
     public function FindOneApiPlat($id){
@@ -127,7 +142,7 @@ class ApiControler extends Controller
         if($item){
             return response()->json(  ["body" => $plat], 200);
         }else{
-            return response()->json(["status" => "not found"],204);
+            return response()->json(["status" => "no content"],204);
         }
     }
 
@@ -143,8 +158,11 @@ class ApiControler extends Controller
            "prix " =>$request-> prix,
            "restaurants_id" => $request->restaurants_id
        ]);
-
-          return response()->json($item, 201);
+       if($item){
+        return response()->json(  ["body" => $item], 201);
+    }else{
+        return response()->json(["status" => "no content"],204);
+    }
     }
 
   public function UpdateApiPlat($id){
@@ -154,14 +172,18 @@ class ApiControler extends Controller
         'restaurants_id' => 'required'
       ]);
 
-   $user->update([
+   $plat->update([
        "Nom" => $request->Nom,
            "prix " =>$request-> prix,
            "restaurants_id" => $request->restaurants_id
    ]);
-       return response()->json();
+   if ($plat){
+   return response()->json(["status" => "success"],201);
+}else{
+    return response()->json(["status" => "Bad request"],400);
+}
      }
-  
+
   public function DeleteApiPlat($id){
     $item = Plat::find($id);
     if($item){
