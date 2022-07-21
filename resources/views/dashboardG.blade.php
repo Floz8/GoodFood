@@ -61,7 +61,7 @@
   <div class="card bg-glass" style="width: 18rem; display: inline-block; margin-left: 0.6rem;">
     <div class="card-body">
       <h5 class="card-title"> Gestion des Fournisseurs</h5>
-      <a href="" class="btn btn-primary">Aller</a>
+      <a href="/FournisseurManager" class="btn btn-primary">Aller</a>
     </div>
   </div>
   <div class="card bg-glass" style="width: 18rem; display: inline-block; margin-left: 0.6rem;">

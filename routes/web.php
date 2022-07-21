@@ -6,6 +6,7 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\PlatController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FournisseurController;
 
 
 /*
@@ -101,6 +102,22 @@ Route::Post('CreateUser', [UserController::class, 'store'])->name('users.store')
 //Update
 Route::get('/EditUser/{id}', [UserController::class, 'goToEdit'])->name('users.goToEdit');
 Route::Post('EditUser/{id}', [UserController::class, 'update'])->name('users.update');;
+
+//CRUD Fournisseur
+Route::get('/FournisseurManager', [FournisseurController::class, 'listmanager']);
+
+//Delete
+Route::get('/FournisseurManager/{id}', [FournisseurController::class, 'delete'])->name('fournisseurs.delete');;
+
+//Create
+Route::get('CreateFournisseur', function () {
+    return view('CreateFournisseur');
+});
+Route::Post('CreateFournisseur', [FournisseurController::class, 'store'])->name('fournisseurs.store');;
+
+//Update
+Route::get('/EditFournisseur/{id}', [FournisseurController::class, 'goToEdit'])->name('fournisseurs.goToEdit');
+Route::Post('EditFournisseur/{id}', [FournisseurController::class, 'update'])->name('fournisseurs.update');;
 
 require __DIR__.'/auth.php';
 

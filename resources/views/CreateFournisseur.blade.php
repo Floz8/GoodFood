@@ -17,11 +17,11 @@
       <form method="post" action="{{ route('fournisseurs.store') }}">
           @csrf
           <div class="form-group">    
-              <label for="fournisseur_name">fournisseur Name:*</label>
-              <input type="text" class="form-control" name="Nom"/>
+              <label for="raison_sociale">fournisseur Name:*</label>
+              <input type="text" class="form-control" name="raison_sociale"/>
           </div>
  
-          <button type="submit" class="btn btn-primary" href="RestaurantManager">Add restaurant</button>
+          <button type="submit" class="btn btn-primary" href="RestaurantManager">Add Fournisseur</button>
       </form>
   </div>
 </div>
