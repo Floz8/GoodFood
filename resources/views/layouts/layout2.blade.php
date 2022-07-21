@@ -17,7 +17,7 @@
           @endif 
           
           
-        </li>
+        </li> 
         <li class="nav-item">
         @if (Auth::check())
           @if(Auth::user()->role=='admin')
