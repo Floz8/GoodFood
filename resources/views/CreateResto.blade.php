@@ -17,11 +17,16 @@
       <form method="post" action="{{ route('restaurants.store') }}">
           @csrf
           <div class="form-group">    
-              <label for="restaurant_name">restaurant Name:*</label>
+              <label for="restaurant_name">restaurant Name:</label>
               <input type="text" class="form-control" name="Nom"/>
           </div>
+
+          <div class="form-group">    
+              <label for="restaurant_description">restaurant Description:</label>
+              <input type="text" class="form-control" name="description"/>
+          </div>
  
-          <button type="submit" class="btn btn-primary" href="RestaurantManager">Add restaurant</button>
+          <button type="submit" class="btn btn-primary" style="margin-top:1rem;" href="RestaurantManager">Add restaurant</button>
       </form>
   </div>
 </div>
