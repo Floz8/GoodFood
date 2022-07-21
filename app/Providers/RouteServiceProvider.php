@@ -50,6 +50,7 @@ class RouteServiceProvider extends ServiceProvider
                 Route::get('/api/plat/{id}', ['App\Http\Controllers\ApiControler', 'FindOneApiPlat']);
                 Route::post('/api/plat', ['App\Http\Controllers\ApiControler', 'CreateApiPlat']);
                 Route::put('/api/plat/{id}', ['App\Http\Controllers\ApiControler', 'UpdateApiPlat']);
+                Route::delete('/api/plat/{id}', ['App\Http\Controllers\ApiControler', 'DeleteApiPlat']);
             
         });
     }
