@@ -35,28 +35,52 @@
 
 
 <body>
-<div class="card-body">
-    <h5 class="card-title"> Gestion des Restaurants</h5>
-    <a href="/RestaurantManager" class="btn btn-primary">Aller</a>
-  </div>
+
+ 
+
+
+ 
 </div>
-<div class="card-body">
-    <h5 class="card-title"> Gestion des Fournisseurs</h5>
-    <a href="" class="btn btn-primary">Aller</a>
-  </div>
-</div>
-<div class="card-body">
-    <h5 class="card-title"> Voir les commandes</h5>
-    <a href="" class="btn btn-primary">Aller</a>
-  </div>
-</div>
-<div class="card-body">
-    <h5 class="card-title"> Voir les plats</h5>
-    <a href="/PlatManager" class="btn btn-primary">Aller</a>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"> Voir les users</h5>
-    <a href="/UserManager" class="btn btn-primary">Aller</a>
-  </div>
+<div class="row">
+<div class="col-sm-12">
+    <h1 class="display-3">Users</h1>
+    <div>
+    <a href="/CreateUser" class="btn btn-primary mb-3">Ajouter un utilisateur</a>
+    </div>     
+
+    <div class="alert alert-success">
+     
+    </div>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+          <td>ID</td>
+          <td>Nom du user</td>
+          <td>Editer le nom</td>
+          <td>user Value</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($users as $user)
+        <tr>
+            <td>{{$user->id}}</td>
+            <td>{{$user->name}} </td>
+            <td>{{$user->email}} </td>
+            <td>{{$user->role}} </td>
+            <td>
+                <a href="{{route('users.goToEdit', ['id' => $user->id])}}">Edit</a>
+            </td>
+            <td>
+                
+                  @csrf
+    
+                <a href="{{route('users.delete', ['id' => $user->id])}}" class="btn btn-danger">Effacer</a>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+  </table>
+<div>
 </div>
   </body>
