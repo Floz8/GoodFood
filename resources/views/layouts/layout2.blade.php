@@ -5,7 +5,7 @@
 
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">GoodFood</a>
+    <a class="navbar-brand" style="color:white; margin-right: 2rem;" href="#">GoodFood</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,28 +13,23 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           @if (Auth::check())
-          <a class="nav-link active" aria-current="page" href="/logout">Log out</a>  
+          <a class="nav-item nav-link" style="color:white; margin-right: 0.6rem;" aria-current="page" href="/logout">Deconnexion {{Auth::user()->name}}</a>  
           @endif 
           
           
         </li>
         <li class="nav-item">
         @if (Auth::check())
-        <a class="nav-link active" aria-current="page" href="/logout">{{Auth::user()->name}}</a>
-        @endif 
-        </li>
-        <li class="nav-item">
-        @if (Auth::check())
           @if(Auth::user()->role=='admin')
-        <a class="nav-link active" aria-current="page" href="dashboardG">Interface d'administration</a>
+        <a class="nav-item nav-link" style="color:white; margin-right: 0.6rem;" aria-current="page" href="dashboardG">Interface d'administration</a>
           @endif
         @endif 
         </li>
-        <li> <a class="nav-item nav-link" href="register"  > @if (Auth::check())
+        <li> <a class="nav-item nav-link" style="color:white; margin-right: 0.6rem;" href="../register" href="../register"  > @if (Auth::check())
 @else
     Créer un compte
 @endif</a></li>
-        <li><a class="nav-item nav-link" href="login" > @if (Auth::check())
+        <li><a class="nav-item nav-link" style="color:white; margin-right: 0.6rem;" href="../login" > @if (Auth::check())
 @else
     Connexion
 @endif</a> </li>
