@@ -37,7 +37,7 @@
 <body>
 <div class="card-body">
     <h5 class="card-title"> Gestion des Restaurants</h5>
-    <a href="" class="btn btn-primary">Aller</a>
+    <a href="/RestaurantManager" class="btn btn-primary">Aller</a>
   </div>
 </div>
 <div class="card-body">
@@ -47,6 +47,11 @@
 </div>
 <div class="card-body">
     <h5 class="card-title"> Voir les commandes</h5>
+    <a href="" class="btn btn-primary">Aller</a>
+  </div>
+</div>
+<div class="card-body">
+    <h5 class="card-title"> Voir les plats</h5>
     <a href="" class="btn btn-primary">Aller</a>
   </div>
 </div>

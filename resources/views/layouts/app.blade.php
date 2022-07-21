@@ -30,6 +30,7 @@
             
       </style>
     </head>
+
     <nav class="navbar navbar-expand-lg navbar-light" style="
     padding-left: 8px;">
       <a class="navbar-brand" style="color:white; margin-right: 2rem;"  href="#">GoodFood</a>
@@ -44,6 +45,7 @@
         </div>
       </div>
     </nav>
+
 <body>
 
 @yield('content')
